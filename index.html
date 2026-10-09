@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La Academia Secreta — Historia y Cívica de Costa Rica</title>
+<style>
+:root{--bg:#100f20;--panel:#1c1a32;--panel2:#262342;--ink:#f8f5ff;--muted:#c0bbd9;--pink:#ff83bd;--gold:#ffd779;--mint:#8df0cf;--violet:#b7a0ff;--red:#ff8d9a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#30254f 0,#151326 46%,#0d0c18 100%);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,input{font:inherit}button{cursor:pointer;border:0;border-radius:14px;padding:11px 16px;font-weight:750;color:#19142c;background:linear-gradient(135deg,var(--gold),var(--pink));box-shadow:0 5px 0 #8e557e;transition:.15s}button:hover{transform:translateY(-2px)}button:active{transform:translateY(2px);box-shadow:0 2px 0 #8e557e}button.secondary{background:#363151;color:var(--ink);box-shadow:0 4px 0 #171529;border:1px solid #514b77}button:disabled{opacity:.5;cursor:not-allowed;transform:none}
+header{max-width:1200px;margin:auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px} .brand{display:flex;gap:10px;align-items:center;font-weight:900;letter-spacing:.2px}.brand-icon{font-size:27px;background:#302949;border:1px solid #66558d;border-radius:13px;padding:5px 10px}
+.pill{background:#2a2744;border:1px solid #494367;border-radius:99px;padding:7px 11px;font-size:13px;color:var(--muted);white-space:nowrap}
+main{max-width:1200px;margin:auto;padding:10px 20px 60px}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:stretch}.hero-copy,.hero-art,.panel{background:linear-gradient(145deg,#211e3a,#17162a);border:1px solid #3f385f;border-radius:25px;padding:26px;box-shadow:0 18px 50px #08071366}.eyebrow{color:var(--mint);font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase}h1{font-size:clamp(30px,5vw,54px);line-height:1.04;margin:10px 0 16px;letter-spacing:-1.5px}h2{margin:0 0 12px;font-size:24px}h3{margin:0 0 8px}.grad{background:linear-gradient(90deg,var(--pink),var(--gold),var(--mint));color:transparent;background-clip:text}.muted{color:var(--muted)}.hero-art{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 30%,#4a3b75,#211d3d 60%,#161528)}.moon{font-size:94px;filter:drop-shadow(0 0 25px #bba2ff88);line-height:1.2}.floating{font-size:25px;position:absolute;animation:float 3s ease-in-out infinite}.f1{top:18%;left:16%}.f2{top:24%;right:14%;animation-delay:.8s}.f3{bottom:25%;left:18%;animation-delay:1.4s}.f4{bottom:18%;right:19%;animation-delay:.4s}@keyframes float{50%{transform:translateY(-12px) rotate(8deg)}}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{background:#17152a;border:1px solid #383253;border-radius:15px;padding:12px;text-align:center}.stat strong{font-size:23px;display:block;color:var(--gold)}.stat span{font-size:12px;color:var(--muted)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:34px 0 14px}.worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.world{background:#211e38;border:1px solid #494064;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px;min-height:180px}.world .emoji{font-size:34px}.world p{color:var(--muted);font-size:14px;margin:0;flex:1}.world small{color:var(--mint);font-weight:800}.world.locked{opacity:.62}.world button{width:100%}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.toolbar button{font-size:14px;padding:9px 13px}.screen{display:none}.screen.active{display:block}.game-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}.game-main{background:#1b1931;border:1px solid #40385f;border-radius:24px;padding:22px;min-width:0}.side{background:#201d38;border:1px solid #40385f;border-radius:24px;padding:18px;height:max-content}.progress{height:9px;background:#383250;border-radius:99px;overflow:hidden;margin:10px 0 18px}.progress>div{height:100%;background:linear-gradient(90deg,var(--pink),var(--gold));width:0%;transition:width .3s}.question-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px}.question{font-size:clamp(21px,3vw,30px);line-height:1.2;margin:18px 0}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.answer{background:#2b2747;border:1px solid #51476f;color:var(--ink);text-align:left;box-shadow:none;min-height:65px;display:flex;gap:10px;align-items:center}.answer .letter{display:grid;place-items:center;flex:0 0 30px;height:30px;border-radius:9px;background:#40375e;color:var(--gold)}.answer.correct{border-color:var(--mint);background:#174538}.answer.wrong{border-color:var(--red);background:#4a2638}.feedback{margin-top:14px;padding:15px;border-radius:15px;background:#2b2746;color:var(--muted);display:none}.feedback.show{display:block}.feedback strong{color:var(--ink)}.bottom-actions{display:flex;justify-content:space-between;gap:10px;margin-top:18px}.side-item{padding:12px 0;border-bottom:1px solid #393451}.side-item:last-child{border:0}.side-item strong{display:block;color:var(--gold);font-size:20px}.side-item span{font-size:12px;color:var(--muted)}.toast{margin:12px 0;padding:12px 14px;background:#2e2847;border:1px solid #51456d;border-radius:14px;color:var(--mint);display:none}.toast.show{display:block}
+.study-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.study-card{padding:17px;border-radius:17px;background:#211e39;border:1px solid #41395e}.study-card h3{color:var(--gold);font-size:16px}.study-card p{color:var(--muted);font-size:14px;margin:0}.search{width:100%;padding:12px 14px;background:#201d38;border:1px solid #51476f;border-radius:13px;color:var(--ink);margin:12px 0}.flashcard{min-height:260px;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;background:radial-gradient(circle at top,#3a315c,#211d39);border:1px solid #51466f;border-radius:22px;padding:28px;cursor:pointer}.flashcard .big{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--mint)}.flashcard h2{font-size:clamp(24px,4vw,38px);margin:18px 0}.flashcard p{color:var(--muted);max-width:620px}.badge{display:inline-block;border-radius:99px;padding:6px 10px;background:#383052;color:var(--gold);font-size:12px;font-weight:800}.results{text-align:center;padding:35px}.results .score{font-size:70px;font-weight:950;color:var(--gold)}.results h2{font-size:30px}.footer{text-align:center;color:#938eae;font-size:12px;margin:30px 0 0}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-art{min-height:240px}.worlds{grid-template-columns:1fr 1fr}.game-layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.side-item{border:0;text-align:center}.study-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){header{padding:14px}.brand{font-size:13px}main{padding:5px 12px 35px}.hero-copy,.hero-art,.panel{padding:20px;border-radius:20px}.worlds{grid-template-columns:1fr}.answers{grid-template-columns:1fr}.answer{min-height:55px}.game-main{padding:16px}.side{padding:10px}.side-item strong{font-size:17px}.study-grid{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.stats{gap:6px}.stat{padding:9px 4px}.stat strong{font-size:19px}}
+
+/* Refinamiento visual y ajustes móviles */
+:root{
+ --bg:#11101c;--panel:#1c1a2b;--panel2:#25223a;
+ --ink:#fbf9ff;--muted:#bcb8cf;--pink:#f4a1cb;--gold:#f5d68a;
+ --mint:#a5e8d5;--violet:#c2b3ff;--red:#ff9eaa;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+ background:
+  radial-gradient(ellipse at 8% 0%,rgba(135,103,194,.16),transparent 34rem),
+  radial-gradient(ellipse at 100% 30%,rgba(219,135,180,.08),transparent 32rem),
+  #11101c;
+ letter-spacing:.005em;
+}
+header{padding:16px 24px}
+.brand{font-size:14px;letter-spacing:.07em}
+.brand-icon{font-size:22px;padding:5px 9px;box-shadow:0 4px 16px #0002}
+.pill{font-size:12px;background:#211e32;border-color:#39344f}
+main{padding:14px 24px 56px}
+.hero{gap:18px}
+.hero-copy,.hero-art,.panel{
+ border-color:#39344f;border-radius:23px;
+ box-shadow:0 12px 38px #07061138;
+}
+.hero-copy{padding:clamp(22px,3vw,34px)}
+.hero-art{padding:24px}
+.eyebrow{font-size:10px;letter-spacing:.16em}
+h1{letter-spacing:-.04em;line-height:1.02}
+h2{letter-spacing:-.025em}
+.muted{color:#c1bdd2}
+button{
+ border-radius:12px;padding:12px 16px;min-height:44px;
+ box-shadow:0 3px 0 #8e557e;font-size:14px;
+}
+button:hover{filter:brightness(1.04)}
+button.secondary{background:#29263d;border-color:#46405f;box-shadow:0 3px 0 #151322}
+button:focus-visible,.answer:focus-visible,.flashcard:focus-visible,input:focus-visible{
+ outline:3px solid var(--mint);outline-offset:3px
+}
+.stats{gap:9px}
+.stat{border-radius:14px;background:#171522;border-color:#343047;padding:13px 10px}
+.stat strong{font-size:22px}
+.section-head{margin:30px 0 13px}
+.worlds{gap:13px}
+.world{
+ border-radius:19px;padding:17px;border-color:#3b3552;
+ background:linear-gradient(145deg,#211e32,#1b192a);
+ box-shadow:0 7px 18px #06050d1f;
+ transition:transform .18s,border-color .18s;
+}
+.world:hover{transform:translateY(-2px);border-color:#6c5e8c}
+.world .emoji{font-size:30px}
+.world small{font-size:10px;letter-spacing:.07em}
+.world h3{font-size:17px;line-height:1.25}
+.world p{font-size:13px;line-height:1.55}
+.game-main,.side{border-radius:21px;border-color:#3b3552}
+.game-main{padding:clamp(16px,2.5vw,25px)}
+.side{background:linear-gradient(145deg,#211e32,#191726)}
+.question-meta{font-size:12px}
+.progress{height:7px;background:#302b43}
+.progress>div{background:linear-gradient(90deg,#f1a4cc,#f5d68a);border-radius:99px}
+.question{font-weight:750;letter-spacing:-.025em;line-height:1.25}
+.answers{gap:9px}
+.answer{
+ border-radius:13px;background:#252239;border-color:#403954;
+ padding:12px;min-height:66px;line-height:1.4;font-weight:600;
+}
+.answer .letter{flex:0 0 29px;height:29px;border-radius:9px;background:#38324f}
+.answer.correct{background:#173c35;border-color:#6bc8ac}
+.answer.wrong{background:#452832;border-color:#dc8196}
+.feedback{border:1px solid #433a5e;background:#252239;line-height:1.6}
+.bottom-actions{align-items:center;gap:10px}
+.side-item{border-color:#39334f}
+.search{border-radius:12px;background:#1d1a2c;border-color:#423a5b;min-height:46px}
+.study-grid{gap:12px}
+.study-card{border-radius:16px;border-color:#39334f;background:linear-gradient(145deg,#211e32,#1a1829);padding:17px}
+.study-card h3{line-height:1.3}
+.study-card p{line-height:1.6}
+.flashcard{border-radius:20px;border-color:#49405f;min-height:250px}
+.badge{background:#302a47;color:#f7d98c}
+.results .score{letter-spacing:-.05em}
+.footer{line-height:1.6;padding:0 8px}
+@media(min-width:1100px){
+ main{padding-top:18px}
+ .worlds{gap:15px}
+ .world{padding:20px}
+}
+@media(max-width:800px){
+ header{padding:13px 16px}
+ main{padding:8px 16px 40px}
+ .hero{gap:13px}
+ .hero-copy,.hero-art,.panel{border-radius:20px}
+ .game-layout{gap:12px}
+ .side{border-radius:18px}
+ .side-item{padding:8px 4px}
+}
+@media(max-width:560px){
+ body{font-size:15px}
+ header{padding:11px 13px;gap:8px}
+ .brand{font-size:11px;letter-spacing:.04em;gap:7px}
+ .brand-icon{font-size:19px;padding:4px 7px}
+ .pill{font-size:10px;padding:6px 8px;max-width:48%;overflow:hidden;text-overflow:ellipsis}
+ main{padding:5px 12px 30px}
+ .hero{grid-template-columns:minmax(0,1fr);gap:11px}
+ .hero-copy{padding:21px 18px}
+ .hero-art{min-height:205px;padding:19px}
+ .moon{font-size:72px}
+ .hero-art h2{font-size:20px;margin:5px 0}
+ .hero-art p{font-size:13px;margin:4px 0 10px}
+ h1{font-size:clamp(31px,10vw,43px);margin:9px 0 12px}
+ h2{font-size:22px}
+ .hero-copy>p{font-size:14px;line-height:1.65}
+ .toolbar{gap:8px}
+ .toolbar button{flex:1 1 145px;padding:11px 12px;font-size:13px}
+ .stats{gap:6px;margin-top:15px}
+ .stat{padding:10px 5px;border-radius:12px}
+ .stat strong{font-size:18px}
+ .stat span{font-size:10px;line-height:1.3;display:block}
+ .section-head{margin:24px 0 11px;gap:8px}
+ .section-head h2{margin:4px 0}
+ .section-head>.muted{font-size:12px}
+ .worlds{grid-template-columns:minmax(0,1fr);gap:10px}
+ .world{min-height:0;padding:15px;border-radius:16px;display:grid;grid-template-columns:38px minmax(0,1fr);column-gap:11px;align-items:start}
+ .world .emoji{grid-row:1/4;font-size:27px}
+ .world small{font-size:9px}
+ .world h3{font-size:16px;margin:2px 0 3px}
+ .world p{font-size:12px;line-height:1.5}
+ .world .muted{grid-column:2;font-size:11px!important;margin-top:4px}
+ .world button{grid-column:1/-1;width:100%;margin-top:4px}
+ .section-head>button{font-size:12px;padding:9px 10px;min-height:40px}
+ .game-layout{grid-template-columns:minmax(0,1fr);gap:10px}
+ .game-main{padding:15px 13px;border-radius:18px}
+ .question-meta{font-size:11px}
+ .question{font-size:23px;margin:16px 0}
+ .answers{grid-template-columns:minmax(0,1fr);gap:8px}
+ .answer{min-height:56px;padding:10px;border-radius:12px;font-size:14px}
+ .answer .letter{flex-basis:27px;height:27px}
+ .bottom-actions{margin-top:14px;align-items:stretch}
+ .bottom-actions>span{font-size:10px!important}
+ .bottom-actions button{padding:10px 11px;font-size:12px}
+ .side{grid-template-columns:repeat(3,minmax(0,1fr));padding:8px;border-radius:15px;gap:3px}
+ .side h3,.side-item:last-child{grid-column:1/-1}
+ .side h3{font-size:14px;margin:4px 5px}
+ .side-item{padding:8px 2px;text-align:center}
+ .side-item strong{font-size:17px}
+ .side-item span{font-size:10px;line-height:1.3}
+ .side-item p{font-size:11px!important;line-height:1.5;margin:5px 3px}
+ .study-grid{grid-template-columns:minmax(0,1fr);gap:9px}
+ .study-card{padding:15px;border-radius:14px}
+ .study-card h3{font-size:15px}
+ .study-card p{font-size:13px;line-height:1.55}
+ .search{font-size:14px}
+ .flashcard{min-height:230px;padding:20px 15px}
+ .flashcard h2{font-size:25px}
+ .results{padding:23px 14px}
+ .results .score{font-size:58px}
+ .results h2{font-size:25px}
+ .results .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .results .toolbar button{flex:1 1 100%}
+ .footer{font-size:10px;margin-top:22px}
+}
+@media(max-width:360px){
+ main{padding-left:9px;padding-right:9px}
+ .brand{font-size:10px}
+ .pill{font-size:9px}
+ .hero-copy{padding:18px 14px}
+ .question{font-size:21px}
+ .bottom-actions{flex-direction:column}
+ .bottom-actions button{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+
+</style>
+</head>
+<body>
+<header><div class="brand"><span class="brand-icon">✦</span><span>LA ACADEMIA <span class="grad">SECRETA</span></span></div><div class="pill" id="topRank">Aprendiz de la Historia</div></header>
+<main>
+<section id="home" class="screen active">
+ <div class="hero"><div class="hero-copy"><div class="eyebrow">Una aventura para aprender</div><h1>El conocimiento es tu <span class="grad">superpoder.</span></h1><p class="muted">Explora los temas de Estudios Sociales de Costa Rica, desbloquea misiones, gana experiencia y prepárate para el examen jugando. Todo el contenido está organizado a partir de tu resumen de estudio.</p><div class="toolbar"><button onclick="startWorld(0)">▶ Empezar aventura</button><button class="secondary" onclick="showScreen('study')">📚 Biblioteca de estudio</button></div><div class="stats"><div class="stat"><strong id="homeXP">0</strong><span>XP acumulada</span></div><div class="stat"><strong id="homeDone">0</strong><span>Preguntas dominadas</span></div><div class="stat"><strong id="homeTopics">8</strong><span>Mundos de estudio</span></div></div></div>
+ <div class="hero-art"><span class="floating f1">✦</span><span class="floating f2">📜</span><span class="floating f3">🌙</span><span class="floating f4">💎</span><div class="moon">🏰</div><h2>La biblioteca perdida</h2><p class="muted">Ocho mundos. Cientos de datos que recordar. Una misión: aprender.</p><span class="badge">NUEVA AVENTURA</span></div></div>
+ <div class="section-head"><div><div class="eyebrow">Mapa de misiones</div><h2>Elige un mundo</h2></div><span class="muted">Puedes volver a jugar cualquier mundo.</span></div><div class="worlds" id="worlds"></div>
+ <div class="section-head"><div><div class="eyebrow">Entrena la memoria</div><h2>Otras formas de estudiar</h2></div></div><div class="worlds">
+ <article class="world"><div class="emoji">🃏</div><h3>Tarjetas de memoria</h3><p>Repasa definiciones y fechas. Intenta responder antes de revelar la solución.</p><button onclick="showScreen('flash')">Abrir tarjetas</button></article>
+ <article class="world"><div class="emoji">📖</div><h3>Biblioteca completa</h3><p>Busca conceptos por palabra clave y lee los apuntes organizados por tema.</p><button onclick="showScreen('study')">Consultar apuntes</button></article>
+ <article class="world"><div class="emoji">🏆</div><h3>Examen final</h3><p>Preguntas mezcladas de todos los mundos para comprobar cuánto aprendió.</p><button onclick="startFinal()">Comenzar examen</button></article>
+ </div>
+</section>
+<section id="quiz" class="screen"><div class="section-head"><div><div class="eyebrow" id="worldEyebrow">Misión</div><h2 id="worldTitle">Desafío</h2></div><button class="secondary" onclick="showScreen('home')">✕ Salir al mapa</button></div><div class="game-layout"><div class="game-main" id="quizMain"></div><aside class="side"><h3>Tu aventura</h3><div class="side-item"><strong id="qXP">0</strong><span>XP de esta misión</span></div><div class="side-item"><strong id="qProgress">0/0</strong><span>Preguntas respondidas</span></div><div class="side-item"><strong id="qStreak">0 🔥</strong><span>Racha correcta</span></div><div class="side-item"><span>Consejo de estudio</span><p class="muted" style="font-size:13px">Lee la explicación después de cada respuesta. Recordar el porqué ayuda más que memorizar letras.</p></div></aside></div></section>
+<section id="study" class="screen"><div class="section-head"><div><div class="eyebrow">Archivo del conocimiento</div><h2>Biblioteca de estudio</h2><p class="muted">Apuntes organizados y texto extraído de las 15 páginas del PDF original. Usa el buscador para encontrar conceptos o consultar una página completa.</p></div><button class="secondary" onclick="showScreen('home')">← Volver al mapa</button></div><input class="search" id="studySearch" placeholder="Buscar: PAE, déficit fiscal, TLC, huelgas…" oninput="renderStudy()"><div class="study-grid" id="studyGrid"></div></section>
+<section id="flash" class="screen"><div class="section-head"><div><div class="eyebrow">Entrenamiento de memoria</div><h2>Tarjetas de estudio</h2></div><button class="secondary" onclick="showScreen('home')">← Volver al mapa</button></div><div class="panel"><div class="question-meta"><span id="flashCount">Tarjeta 1</span><span>Piensa antes de voltear</span></div><div class="flashcard" onclick="flipFlash()"><div class="big" id="flashLabel">Pregunta</div><h2 id="flashFront">¿Qué es el déficit fiscal?</h2><p id="flashBack" style="display:none"></p><span class="badge" id="flashHint">Toca para revelar</span></div><div class="bottom-actions"><button class="secondary" onclick="prevFlash()">← Anterior</button><button onclick="nextFlash()">Siguiente →</button></div></div></section>
+<section id="results" class="screen"><div class="panel results"><div class="eyebrow">Misión completada</div><div style="font-size:50px" id="resultEmoji">🏆</div><h2 id="resultTitle">¡Buen trabajo!</h2><div class="score" id="resultScore">0%</div><p class="muted" id="resultText"></p><div class="stats"><div class="stat"><strong id="resultCorrect">0</strong><span>Correctas</span></div><div class="stat"><strong id="resultWrong">0</strong><span>Por repasar</span></div><div class="stat"><strong id="resultXP">0</strong><span>XP ganada</span></div></div><div class="toolbar" style="justify-content:center;margin-top:22px"><button onclick="reviewWrong()">Repasar errores</button><button class="secondary" onclick="showScreen('home')">Volver al mapa</button></div><div id="reviewBox"></div></div></section>
+<div class="footer">Hecho para estudiar de forma entretenida · El contenido sigue el resumen PDF proporcionado. Si el apunte contiene algún dato confuso, se conserva su formulación para que pueda contrastarse con el material de clase.</div>
+</main>
+<script>
+const worlds=[
+{id:"politica",name:"El reino de la democracia",emoji:"🏛️",desc:"Partidos políticos, sistemas y personajes de Costa Rica.",tag:"Política costarricense",qs:[
+["¿Qué es un partido político según el resumen?",["Una organización de participación de un sistema democrático","Una empresa comercial","Una institución bancaria","Un grupo militar"],0,"El resumen define los partidos políticos como organizaciones de participación de un sistema democrático."],
+["¿Cómo se llama un sistema político con dos partidos principales?",["Unipartidismo","Bipartidismo","Pluripartidismo","Neoliberalismo"],1,"Bipartidismo es el fenómeno político en que destacan dos partidos; el resumen ejemplifica PLN y PUSC."],
+["¿Qué caracteriza al unipartidismo según el resumen?",["Muchos partidos con igual poder","Un monopolio político de carácter dictatorial","La ausencia de gobierno","La elección de tres parlamentos"],1,"El resumen lo describe como un régimen con monopolio de un color político y carácter de dictadura."],
+["¿Qué significa pluripartidismo o multipartidismo?",["Un solo partido","Dos partidos","Gran cantidad de partidos políticos","Gobierno militar"],2,"Es un sistema político con gran cantidad de partidos."],
+["¿Qué partido ganó las elecciones de 1948 según el resumen?",["Partido Unión Nacional","Partido Liberación Nacional (PLN)","PUSC","Alianza Popular"],1,"El apunte señala al PLN y a José María Figueres Ferrer."],
+["¿Quién aparece como figura asociada al PLN en 1948?",["José María Figueres Ferrer","Óscar Arias Sánchez","Carlos Alvarado","Abel Pacheco"],0,"El resumen vincula la victoria del PLN de 1948 con José María Figueres Ferrer."],
+["¿Qué dos motivos menciona el resumen para evitar tendencias comunistas?",["La crisis petrolera y el turismo","Los rencores de 1948 y el anticomunismo de la Guerra Fría","El TLC y la agricultura","La banca privada y CODESA"],1,"El apunte menciona los rencores de la Guerra Civil de 1948 y el anticomunismo debido a la Guerra Fría."],
+["¿Qué dos partidos se alternaron el poder desde los años 80 hasta 2014, según el apunte?",["PLN y Partido Unidad Social Cristiana","PLN y Alianza Popular","PUSC y Unión Nacional","Partido Demócrata y PUSC"],0,"El resumen indica Partido Liberación Nacional y Partido Unidad Social Cristiana."],
+["¿Qué institución propone vida estudiantil y votaciones para contrarrestar la apatía política?",["CCSS","MEP","CODESA","FMI"],1,"El apunte menciona al MEP, junto con defensa del sufragio, transparencia y rendición de cuentas."],
+["¿Qué se requiere para fortalecer la democracia costarricense según la práctica?",["Menos transparencia","Transparencia","Eliminar las votaciones","Un solo partido"],1,"La respuesta indicada en el resumen es transparencia."],
+["¿Qué puede generar una Asamblea Legislativa fraccionada por muchos partidos?",["Aprobación inmediata de todas las leyes","Dificultad para llegar a acuerdos y aprobar leyes","La eliminación de partidos","El fin de las elecciones"],1,"Con múltiples partidos puede ser más difícil construir acuerdos y aprobar leyes."],
+["¿Qué cinco partidos aparecen en la práctica del resumen?",["PLN, Unión Nacional, Alianza Popular, Unificación Nacional y Demócrata","PLN, PUSC, FMI, CODESA y CCSS","PLN, ICE, INS, UCR y MEP","PUSC, CENPRO, CAFTA, CEMPASA y FERTICA"],0,"La práctica enumera PLN, Unión Nacional, Alianza Popular, Unificación Nacional y Demócrata."]
+]},
+{id:"crisis",name:"La tormenta de los 80",emoji:"🌩️",desc:"Crisis petrolera, deuda, desempleo y consecuencias sociales.",tag:"Crisis económica",qs:[
+["¿Qué factor impactó la economía costarricense en los años 80 según el resumen?",["La crisis petrolera","La creación del turismo","La caída de internet","La llegada del euro"],0,"El resumen identifica la crisis petrolera y el aumento del precio del petróleo como factores externos."],
+["¿Cuál fue un factor externo de la crisis de los años 80?",["Aumento del precio del petróleo","Reducción de las exportaciones de frutas únicamente","Aumento de salarios públicos","Creación de CENPRO"],0,"El alza del precio del petróleo aparece entre los factores externos."],
+["¿Qué fenómeno migratorio menciona el resumen como factor externo?",["Migración de canadienses","Alta migración de nicaragüenses","Migración de japoneses","Migración de europeos"],1,"El apunte relaciona la situación regional con la migración de nicaragüenses hacia Costa Rica."],
+["¿Qué ocurrió con la venta de productos manufacturados según el resumen?",["Costa Rica dejó de venderlos","Se duplicaron automáticamente","Se dejaron de importar todos los alimentos","Solo se vendieron a Japón"],0,"El apunte indica que Costa Rica dejó de vender productos manufacturados."],
+["¿Qué es el déficit fiscal?",["Dinero que el Estado debe a otros países","Diferencia o pérdida entre gasto público e ingresos tributarios","Apoyo económico a una actividad","Tratado de intercambio"],1,"Esa es la definición escrita en el resumen."],
+["¿Qué es la deuda externa?",["Dinero que el gobierno debe a sus ciudadanos","Dinero que el Estado debe a otros países","El costo de las exportaciones","Un impuesto municipal"],1,"La deuda externa son los dineros que el Estado debe a otros países."],
+["¿Qué es la deuda interna?",["Dinero que el gobierno debe a sus propios ciudadanos","Dinero prestado solo por otros países","Una reducción de impuestos","Un subsidio agrícola"],0,"La deuda interna es la deuda del gobierno con sus propios ciudadanos."],
+["¿Con qué institución rompió el ligamen el gobierno de Rodrigo Carazo, según la práctica?",["Banco Mundial","Fondo Monetario Internacional","CENPRO","CODESA"],1,"El resumen indica que Rodrigo Carazo rompió el ligamen con el Fondo Monetario Internacional."],
+["¿Qué consecuencia social de la crisis aparece en el apunte?",["Aumento de la pobreza extrema","Desaparición de todos los impuestos","Fin de la deuda externa","Aumento general del empleo"],0,"El resumen señala pobreza, desempleo y afectaciones a salud, educación y vivienda."],
+["¿Qué servicios o condiciones se vieron afectados por la crisis?",["Empleo, salud, educación y vivienda digna","Solo el turismo","Solo las telecomunicaciones","Únicamente el comercio exterior"],0,"La práctica enumera empleo, salud, educación, vivienda digna, pobreza extrema y estructura productiva."],
+["¿Qué puede ocurrir con los productos básicos durante una crisis?",["Falta o encarecimiento","Siempre bajan de precio","Desaparecen los impuestos automáticamente","Se vuelven gratuitos"],0,"La práctica indica que una consecuencia recurrente es la falta o el encarecimiento de productos básicos."],
+["¿Qué hizo Carazo con los estancos del CNP y las ferias del agricultor según el resumen?",["Abrió estancos y creó ferias del agricultor","Privatizó todos los hospitales","Creó el TLC","Eliminó la agricultura"],0,"El apunte le atribuye abrir estancos del Consejo Nacional de Producción y crear ferias del agricultor."]
+]},
+{id:"neoliberal",name:"El cambio de modelo",emoji:"🔄",desc:"Estado benefactor, neoliberalismo, exportaciones y turismo.",tag:"Modelos económicos",qs:[
+["¿Qué modelo reemplazó al Estado benefactor en la transición descrita?",["Estado neoliberal","Estado feudal","Estado monárquico","Estado colonial"],0,"El resumen dice que se pasó de un Estado benefactor a un Estado neoliberal."],
+["¿Qué se fomenta para reducir la intervención del Estado?",["La iniciativa privada","El cierre de exportaciones","El unipartidismo","La eliminación del turismo"],0,"El apunte menciona fomentar la iniciativa privada."],
+["¿Qué propuso el nuevo Estado según el resumen?",["Promoción de exportaciones, agricultura de cambio y turismo","Cerrar todas las empresas privadas","Abandonar toda actividad agrícola","Eliminar el comercio internacional"],0,"Las propuestas indicadas son promoción de exportaciones, agricultura de cambio y turismo."],
+["¿Cuál fue el lema asociado a Luis Alberto Monge?",["Volvamos a la tierra","Pura vida digital","Cero exportaciones","Una sola industria"],0,"El resumen atribuye a Luis Alberto Monge el lema «Volvamos a la tierra»."],
+["¿Qué es el neoliberalismo según el apunte?",["Propuesta político-económica que retoma ideas del liberalismo","Un sistema de partido único","Una deuda con ciudadanos","Una huelga laboral"],0,"Esa es la definición recogida en el documento."],
+["¿Qué son los subsidios?",["Apoyo económico suministrado por un ente público a una actividad del sector social","Préstamos personales siempre privados","Impuestos sobre exportaciones","Acuerdos entre países"],0,"El resumen define subsidio como apoyo económico de un ente público para una actividad del sector social."],
+["¿Cuál de estos es un producto no tradicional citado en el resumen?",["Melón","Café únicamente","Banano únicamente","Caña de azúcar únicamente"],0,"El melón está en la lista de frutas no tradicionales; café, banano y caña son cultivos tradicionales mencionados."],
+["¿Cuál grupo contiene productos no tradicionales del resumen?",["Yuca, ñame, ñampí y jengibre","Café, banano y caña solamente","Trigo, cebada y avena","Arroz, frijol y maíz únicamente"],0,"El apunte enumera yuca, ñame, ñampí, jengibre y malanga entre los tubérculos."],
+["¿Qué debía mantenerse a pesar de promover cultivos nuevos?",["Los cultivos tradicionales como café, banano y caña de azúcar","Solo flores ornamentales","Únicamente productos importados","La producción de petróleo"],0,"El modelo no pretendía abandonar los cultivos tradicionales."],
+["¿Qué podían generar los productos no tradicionales?",["Aumento en las divisas","El fin del comercio","Eliminación de los impuestos","Cierre de mercados"],0,"El resumen señala que los productos no tradicionales generan aumento en las divisas."],
+["¿Qué nueva fuente de riqueza se destacó en la práctica junto con «Volvamos a la tierra»?",["Turismo","Minería de oro exclusivamente","Fabricación de petróleo","Pesca de ballenas"],0,"La respuesta de la práctica es el turismo."],
+["¿Qué es un Tratado de Libre Comercio según el resumen?",["Tratado entre países con acuerdos económicos y políticos para intercambiar productos","Una protesta de trabajadores","Una deuda del gobierno","Un programa escolar"],0,"El resumen lo define como un tratado entre países para acuerdos económicos y políticos de intercambio de productos."]
+]},
+{id:"pae1",name:"El desafío PAE I",emoji:"🧭",desc:"Luis Alberto Monge, objetivos y medidas del primer programa.",tag:"PAE I",qs:[
+["¿Quién gobernó durante el PAE I según el resumen?",["Luis Alberto Monge Álvarez","Óscar Arias Sánchez","José María Figueres Olsen","Carlos Alvarado"],0,"El apunte asocia el PAE I con la administración de Luis Alberto Monge Álvarez."],
+["¿Cuánto financiamiento del Banco Mundial se indica para el PAE I?",["80 millones de dólares","200 millones de dólares","250 millones de dólares","20 millones de dólares"],0,"El resumen señala $80 millones por el Banco Mundial."],
+["¿Cuál era un objetivo del PAE I?",["Fomentar las exportaciones","Eliminar toda exportación","Aumentar el tamaño del Estado sin límites","Cerrar la banca privada"],0,"Entre sus objetivos estaban fomentar exportaciones, desarrollar fuentes de ingreso, reducir gasto público y privatizar empresas estatales."],
+["¿Cuál medida se menciona para el PAE I?",["Minidevaluación del colón","Crear el euro","Eliminar toda agricultura","Cerrar el turismo"],0,"La minidevaluación del colón aparece entre las medidas."],
+["¿Qué centro se creó para promover exportaciones según el resumen?",["CENPRO","INAMU","EBAIS","CAFTA"],0,"El apunte menciona la creación del Centro de Promoción de Exportaciones (CENPRO)."],
+["¿Qué medida fiscal se contemplaba en el PAE I?",["Reducir impuestos","Eliminar toda exportación","Aumentar indefinidamente el gasto público","Prohibir la iniciativa privada"],0,"La reducción de impuestos y del gasto público aparecen entre las medidas listadas."],
+["¿Qué edad de jubilación aparece como medida en el resumen del PAE I?",["65 años","50 años","55 años","70 años"],0,"El apunte menciona el aumento a los 65 años de edad de jubilación."],
+["¿Qué pretendía hacer el PAE I con empresas estatales?",["Privatizar empresas estatales","Convertirlas todas en partidos políticos","Eliminar todas las exportaciones","Crear un solo sindicato"],0,"Privatizar empresas estatales aparece entre los objetivos del PAE I."],
+["¿Quiénes impulsaron los PAES según el documento?",["Banco Mundial y Fondo Monetario Internacional","MEP y UCR","ICE e INS","PLN y PUSC solamente"],0,"El resumen atribuye el impulso de los PAES al Banco Mundial y al FMI."],
+["¿Qué grupo se menciona como obstáculo al libre comercio en la práctica?",["El aparato burocrático del Estado","Los turistas","Los exportadores de melón","Los estudiantes"],0,"La respuesta de la práctica es el aparato burocrático del Estado; también se mencionan sindicatos y burocracia en otra sección."]
+]},
+{id:"pae2",name:"El reto PAE II",emoji:"⚙️",desc:"Gobierno de Óscar Arias, reformas y consecuencias.",tag:"PAE II",qs:[
+["¿Qué presidente se asocia con el PAE II?",["Óscar Arias Sánchez","Luis Alberto Monge","Rodrigo Carazo","Abel Pacheco"],0,"El resumen identifica a Óscar Arias Sánchez como gobierno del PAE II."],
+["¿Cuánto financiamiento se indica para el PAE II por el Banco Mundial y Japón?",["200 millones de dólares","80 millones de dólares","250 millones de dólares","500 millones de dólares"],0,"El apunte indica $200 millones."],
+["¿Cuál actividad se menciona en el gobierno del PAE II?",["Reconversión industrial","Eliminar la banca privada","Abandonar toda industria","Crear la CCSS"],0,"El resumen menciona reconversión industrial, modernización financiera, negocios privados y eliminar aranceles."],
+["¿Cuál fue una medida de la administración Arias que aparece en el resumen?",["Fortalecer la banca privada","Cerrar todas las ferias del agricultor","Eliminar el sector público por completo","Prohibir los productos agrícolas"],0,"Fortalecer la banca privada está entre las medidas enumeradas."],
+["¿Qué se hizo con los precios de los granos básicos según el apunte?",["Se fijaron precios","Se prohibió venderlos","Se regalaron en todos los comercios","Se exportaron exclusivamente"],0,"El resumen incluye fijar precios a los granos básicos."],
+["¿Qué medida relacionada con CODESA se menciona?",["Vender empresas ligadas a CODESA","Crear CODESA como partido político","Prohibir todas las ventas","Cambiar el nombre del FMI"],0,"La venta de empresas ligadas a CODESA aparece en las medidas del PAE II."],
+["¿Qué consecuencia se atribuye a la política restrictiva?",["Protesta de los campesinos","Fin de todas las huelgas","Desaparición del desempleo","Eliminación del comercio"],0,"El resumen menciona una política restrictiva, reducción de subsidios y protesta de campesinos."],
+["¿Qué gobierno avanzó con el PAE II según el resumen?",["José María Figueres Olsen","Carlos Alvarado","Abel Pacheco","Laura Chinchilla"],0,"El apunte indica que el gobierno de José María Figueres Olsen avanzó con el PAE II."],
+["¿Cuál es una medida de apoyo al sector agrícola citada?",["Subsidiar la producción agrícola","Prohibir los productos agrícolas","Cerrar todos los mercados","Eliminar todos los granos básicos"],0,"El apunte incluye subsidiar la producción agrícola y apoyar productos agrícolas."],
+["¿Qué otra medida aparece en los ajustes de Arias Sánchez?",["Restringir el crédito","Eliminar la banca privada","Cancelar el turismo","Prohibir las exportaciones"],0,"Restringir el crédito está entre las medidas listadas."]
+]},
+{id:"pae3",name:"El laberinto del PAE III",emoji:"🌀",desc:"Privatización, reforma estatal y efectos del ajuste.",tag:"PAE III y Reforma del Estado",qs:[
+["¿Cuánto financiamiento se indica para el PAE III?",["250 millones de dólares del Banco Mundial","80 millones de dólares del FMI","200 millones de dólares de Japón","25 millones de dólares de CENPRO"],0,"El resumen indica $250 millones del Banco Mundial."],
+["¿Cuál repercusión del PAE III aparece en el apunte?",["Desempleo","Fin de la pobreza","Aumento garantizado de todos los salarios","Eliminación de negocios privados"],0,"Se enumeran desempleo, cierre de negocios y tratado de libre comercio."],
+["¿Qué empresas aparecen entre las aperturas relacionadas con el PAE III?",["CEMPASA y FERTICA","ICE e INAMU","MEP y UCR","PLN y PUSC"],0,"El resumen menciona Cementos del Pacífico S.A. (CEMPASA) y FERTICA (fertilizantes)."],
+["¿Cuál compromiso aparece en el PAE III?",["Privatización y venta de empresas estatales","Crear más partidos políticos","Eliminar todos los impuestos municipales","Prohibir la banca estatal"],0,"Entre los compromisos se listan privatización, venta de empresas y modernización de la banca estatal."],
+["¿Qué buscaba la Reforma del Estado según el resumen?",["Reducir el tamaño del Estado e intentar privatizar instituciones estatales","Aumentar el Estado sin cambios","Eliminar los tratados comerciales","Prohibir la industria"],0,"El apunte asocia la reforma con el intento de privatización y la reducción del tamaño del Estado."],
+["¿Cuál fue un motivo del PAE III listado en el resumen?",["Movilidad laboral","Crear un partido único","Eliminar las exportaciones","Cerrar las fronteras"],0,"La movilidad laboral aparece en la lista de motivos junto a reorientar la economía y disminuir el gasto público."],
+["¿Qué efecto negativo de la Reforma del Estado se menciona?",["Reducción del gasto social","Eliminación de toda pobreza","Fin de las demandas sociales","Aumento automático de calidad de vida"],0,"El resumen menciona reducción del gasto social, limitación del desarrollo y deterioro de la calidad de vida."],
+["¿Qué consecuencia del modelo de desarrollo se cita?",["Deterioro del salario","Desaparición de los servicios públicos","Fin de la inversión extranjera","Eliminación de ventas ambulantes"],0,"El apunte menciona deterioro del salario, ventas ambulantes, pobreza y reducción del empleo."],
+["¿Qué institución aparece entre los activos que el apunte dice que se buscaba vender?",["ICE","MEP únicamente","INAMU únicamente","UCR únicamente"],0,"El resumen enumera ICE, INS y CCSS en la sección de ventas de activos; se conserva aquí la formulación del documento."],
+["¿Cuál es una consecuencia mencionada de los PAES?",["Demandas sociales","Eliminación de toda burocracia","Fin de la política","Desaparición de los sindicatos"],0,"El resumen enumera demandas sociales junto con deterioro de calidad de vida y reducción del gasto social."]
+]},
+{id:"tlc",name:"Las rutas del comercio",emoji:"🌎",desc:"CAFTA, ventajas, desventajas y países con TLC.",tag:"Tratados de libre comercio",qs:[
+["¿Entre quiénes se establece el CAFTA según el resumen?",["Centroamérica, República Dominicana y Estados Unidos","Costa Rica y Japón únicamente","Europa y China únicamente","Costa Rica y Canadá solamente"],0,"El resumen define el CAFTA como Centroamérica, República Dominicana y Estados Unidos."],
+["¿Cuál es una ventaja del TLC según el documento?",["Nuevas fuentes de trabajo","Quiebra de negocios pequeños","División social","Irrespeto de garantías sociales"],0,"Las ventajas listadas son opciones de venta, nuevas fuentes de trabajo y mayor competitividad."],
+["¿Cuál es una desventaja del TLC según el resumen?",["Quiebra de negocios pequeños","Más opciones de venta","Nuevas fuentes de trabajo","Mayor competitividad"],0,"El apunte menciona la quiebra de negocios pequeños entre las desventajas."],
+["¿Cuál de estos países aparece en la lista de TLC del resumen?",["Singapur","Noruega","Egipto","India"],0,"El resumen enumera Colombia, Canadá, Chile, China, México, Panamá, Perú y Singapur."],
+["¿Cuál es otra posible ventaja del TLC citada?",["Modificar la producción y competitividad","Eliminar todos los mercados","Prohibir exportaciones","Reducir las opciones de venta"],0,"El resumen menciona modificar la producción y competitividad."],
+["¿Qué desventaja social menciona el resumen?",["División social","Más fuentes de empleo","Opciones de venta","Aumento de competitividad"],0,"La división social aparece entre las desventajas indicadas."],
+["¿Cuál grupo contiene únicamente países nombrados en la lista del apunte?",["Colombia, México, Canadá y Panamá","Brasil, India, Noruega y Egipto","Australia, Francia, Alemania y Grecia","Rusia, Cuba, Haití y Jamaica"],0,"Los cuatro países de la primera opción aparecen en la lista de tratados del resumen."],
+["¿Qué es un subsidio en el contexto de políticas económicas?",["Apoyo económico de un ente público para una actividad del sector social","Una guerra ideológica","Un partido político","Un impuesto de importación"],0,"Esta definición está en la sección de conceptos del resumen."]
+]},
+{id:"social",name:"La plaza de las voces",emoji:"📣",desc:"Huelgas, movimientos sociales, corrupción y vida democrática.",tag:"Movimientos sociales y actualidad",qs:[
+["¿Qué es una huelga?",["Forma de protesta de trabajadores para conseguir mejoras laborales","Una elección nacional","Un tratado comercial","Una deuda interna"],0,"El resumen define huelga como forma de protesta de los trabajadores para conseguir mejoras laborales."],
+["¿Qué es una manifestación social?",["Marcha de un grupo activista mediante congregación en las calles","Un préstamo internacional","Una exportación no tradicional","Un partido político"],0,"Esa es la definición que ofrece el apunte."],
+["¿Qué significa inseguridad según el resumen?",["Temor de la población por asaltos, agresiones o delincuencia","Aumento de exportaciones","Una reforma fiscal","Una votación escolar"],0,"El documento la define como temor de la población por asaltos, agresiones o delincuencia."],
+["¿Cuánto duró la huelga de controladores aéreos de 2004 según el apunte?",["47 días","17 días","42 días","7 días"],0,"El resumen indica 47 días y menciona tres aeropuertos."],
+["¿Cuánto duró la huelga de EBAIS del proyecto UCR de 2013 según el resumen?",["17 días","47 días","42 días","100 días"],0,"El apunte señala 17 días."],
+["¿Qué huelga se describe como la más larga, de 42 días sin médicos?",["Huelga por incentivos médicos","Huelga de controladores aéreos","Huelga de EBAIS","Huelga del Combo ICE"],0,"El resumen dice que fue para subir el salario y duró 42 días."],
+["¿Qué se asocia con el «Combo ICE» del año 2000?",["Cambios al ICE en telecomunicaciones y protestas","La creación de CENPRO","La crisis petrolera de los 80","La creación del INAMU"],0,"El apunte menciona leyes que modificaban el ICE en materia de telecomunicaciones."],
+["¿Qué institución se cita como creada para proteger a la mujer?",["INAMU","CENPRO","CODESA","FERTICA"],0,"La respuesta de la práctica es el INAMU."],
+["¿Qué presidente aparece asociado al caso CCSS-Fischel en el resumen?",["Rafael Ángel Calderón Fournier","Miguel Ángel Rodríguez","José María Figueres Ferrer","Abel Pacheco"],0,"El resumen atribuye a Calderón Fournier la acusación de peculado y corrupción agravada en ese caso."],
+["¿Qué expresidente aparece asociado al caso de sobornos de Alcatel?",["Miguel Ángel Rodríguez","Rafael Ángel Calderón Fournier","Luis Alberto Monge","Carlos Alvarado"],0,"La práctica identifica a Miguel Ángel Rodríguez en la pregunta sobre sobornos vinculados a Alcatel."],
+["¿Qué expresidente aparece como investigado por supuestos beneficios de Alcatel y posterior establecimiento en Suiza y España?",["José María Figueres Olsen","Abel Pacheco","Óscar Arias Sánchez","Rodrigo Carazo"],0,"Esa es la persona indicada en la práctica del resumen."],
+["¿Qué puede generar la corrupción política de altos funcionarios según el apunte?",["Necesidad de buscar alternativas políticas","Fin de todas las elecciones","Más confianza automáticamente","Eliminación de la rendición de cuentas"],0,"La práctica señala la necesidad de buscar alternativas políticas."],
+["¿Qué ocurrió durante el COVID-19 según la sección del resumen?",["Gobierno de Carlos Alvarado, descontento popular y falta de liderazgo","Fin de la política costarricense","Creación del PAE I","Firma del CAFTA"],0,"El apunte lista esos temas en la sección sobre COVID-19."]
+]},
+{id:"practica",name:"El portal del examen",emoji:"🔮",desc:"Preguntas de práctica y respuestas que pueden aparecer en el examen.",tag:"Práctica de examen",qs:[
+["Según la práctica, ¿qué originó el alza del petróleo que golpeó el modelo de sustitución de importaciones?",["Regresar a un modelo de exploración del sector primario","Eliminar toda agricultura","Crear el PAE III","Aumentar la banca privada"],0,"Esa es la respuesta consignada en la práctica del documento."],
+["¿Cómo afectaron a Costa Rica la revolución sandinista y la dictadura de Somoza según el apunte?",["Migración de nicaragüenses que huían de la guerra","Cierre de todas las escuelas","Creación del TLC con Singapur","Eliminación de la deuda externa"],0,"La práctica menciona la migración de nicaragüenses hacia Costa Rica."],
+["Si Costa Rica dejó de vender productos manufacturados y el Estado recibió menos impuestos, ¿qué se produjo?",["Un fuerte déficit fiscal","Un superávit garantizado","El fin de la deuda interna","La creación de un partido"],0,"La respuesta de la práctica es un fuerte déficit fiscal."],
+["¿Qué se mencionó como forma de incentivar las exportaciones?",["Certificados de abono tributario (CAT)","Cierre de CENPRO","Prohibición de productos no tradicionales","Reducción de turismo"],0,"La práctica cita la generación de certificados de abono tributario (CAT)."],
+["¿Qué consecuencia de la política restrictiva durante la primera administración de Óscar Arias señala la práctica?",["Se importaron productos agrícolas que se producían en el país","Se eliminaron todas las importaciones","Desapareció el desempleo","Se cancelaron los TLC"],0,"Esa es la respuesta indicada en el resumen."],
+["¿Qué dos países centroamericanos se mencionan con grupos armados en la década de 1980?",["El Salvador y Nicaragua","Panamá y Belice","Guatemala y Costa Rica","Honduras y Canadá"],0,"La práctica responde El Salvador y Nicaragua."],
+["¿Qué documento de neutralidad menciona el resumen?",["Proclama de Neutralidad Perpetua","Tratado de Libre Comercio","Plan de Ajuste Estructural","Ley de Pensiones Complementarias"],0,"El apunte lo describe como documento firmado por Luis Alberto Monge; conserva la formulación del material."],
+["¿Qué es la Guerra Fría según el resumen?",["Guerra ideológica entre formas de pensar capitalistas y comunistas","Una huelga de trabajadores","Una crisis agrícola nacional","Un acuerdo de exportación"],0,"El resumen la describe como guerra ideológica entre capitalismo y comunismo, aunque su redacción de los países asociados puede ser confusa."],
+["¿Qué buscaban los PAES, de acuerdo con la explicación general del resumen?",["Cambios económicos y administrativos, reducción del gasto y apertura","Eliminar todas las exportaciones","Sustituir elecciones por dictadura","Aumentar el tamaño estatal sin cambios"],0,"El resumen los relaciona con reformas administrativas y económicas, reducción del gasto, apertura y privatización."],
+["Cite un efecto negativo del TLC que aparece en la práctica.",["Quiebra de muchos negocios pequeños frente a multinacionales","Más opciones de venta","Nuevas fuentes de trabajo","Mayor competitividad"],0,"La práctica menciona quiebra de negocios pequeños, división social e irrespeto de garantías sociales."],
+["¿Cuál grupo contiene medidas de reducción del tamaño del Estado citadas en la práctica?",["Movilidad laboral, traslado o venta de empresas públicas, reorientar la economía y disminuir gasto público","Aumentar el gasto social, eliminar exportaciones y cerrar bancos","Crear partidos, aumentar turismo y ampliar salarios","Eliminar votaciones, subsidios y tratados"],0,"La práctica enumera movilidad laboral, traslado/venta de empresas públicas, reorientación económica y disminución del gasto público."],
+["¿Qué cinco productos no tradicionales se pueden citar según la práctica?",["Melón, jengibre, yuca, malanga y calas","Café, banano, caña, arroz y frijol","Petróleo, carbón, oro, plata y gas","Trigo, avena, cebada, centeno y maíz"],0,"La práctica da como ejemplo melón, jengibre, yuca, malanga y calas."]
+]}
+];
+const notes=[
+["Partido político","Organización de participación de un sistema democrático.","Política"],
+["Bipartidismo","Fenómeno político con dos partidos; el resumen ejemplifica PLN y PUSC.","Política"],
+["Unipartidismo","Régimen con monopolio político, descrito en el apunte como de carácter dictatorial.","Política"],
+["Pluripartidismo o multipartidismo","Sistema político con gran cantidad de partidos políticos.","Política"],
+["Estado benefactor","Concepto que el resumen relaciona con el periodo de la Guerra Civil de 1948.","Modelos económicos"],
+["Deuda externa","Dinero que el Estado debe a otros países.","Crisis económica"],
+["Déficit fiscal","Diferencia o pérdida entre gasto público e ingresos tributarios.","Crisis económica"],
+["Deuda interna","Dinero que el gobierno debe a sus propios ciudadanos.","Crisis económica"],
+["Guerra Fría","Conflicto ideológico entre capitalismo y comunismo, según el resumen.","Política internacional"],
+["Neoliberalismo","Propuesta político-económica que retoma ideas del liberalismo.","Modelos económicos"],
+["Subsidio","Apoyo económico de un ente público para una actividad del sector social.","Modelos económicos"],
+["Tratado de Libre Comercio","Acuerdo entre países para intercambio de productos y acuerdos económicos y políticos.","Comercio"],
+["Crisis de los años 80","El resumen destaca la crisis petrolera, el aumento del precio del petróleo, deuda, déficit y efectos sociales.","Crisis económica"],
+["Factores externos de la crisis","Aumento del precio del petróleo, alta migración nicaragüense y presencia de Estados Unidos, según el apunte.","Crisis económica"],
+["Factores internos de la crisis","El apunte menciona que Costa Rica dejó de vender productos manufacturados y el gobierno pidió préstamos internacionales.","Crisis económica"],
+["Agricultura de cambio","Promoción de productos no tradicionales; el resumen la relaciona con el lema «Volvamos a la tierra».","Exportaciones"],
+["Productos no tradicionales","Ejemplos del resumen: melón, cítricos, fresas, cacao, yuca, ñame, ñampí, jengibre, malanga, flores y plantas ornamentales.","Exportaciones"],
+["Modelo de promoción de exportaciones","Promover productos no tradicionales sin abandonar café, banano y caña; ampliar relaciones internacionales y generar divisas.","Exportaciones"],
+["PAE I","Asociado a Luis Alberto Monge. El apunte menciona $80 millones del Banco Mundial, minidevaluación, CENPRO, reducción de gasto e incentivos a exportaciones.","PAE"],
+["PAE II","Asociado a Óscar Arias Sánchez. El apunte indica $200 millones del Banco Mundial y Japón; menciona banca privada, reconversión industrial y ajustes agrícolas.","PAE"],
+["PAE III","El apunte indica $250 millones del Banco Mundial; menciona desempleo, cierre de negocios, apertura y compromisos de privatización.","PAE"],
+["Reforma del Estado","Intento de privatización de instituciones estatales y reducción del tamaño del Estado, según el resumen.","PAE"],
+["CAFTA","Tratado entre Centroamérica, República Dominicana y Estados Unidos, como lo define el resumen.","Comercio"],
+["Ventajas del TLC","Opciones de venta, nuevas fuentes de trabajo y cambios en producción y competitividad.","Comercio"],
+["Desventajas del TLC","División social, quiebra de negocios pequeños, posibles afectaciones a garantías sociales y problemas de toma de decisiones.","Comercio"],
+["Huelga","Forma de protesta de trabajadores para conseguir mejoras laborales.","Movimientos sociales"],
+["Inseguridad","Temor de la población por asaltos, agresiones o delincuencia.","Movimientos sociales"],
+["Manifestación social","Marcha de un grupo activista mediante congregación en las calles.","Movimientos sociales"],
+["Huelga de incentivos médicos","El resumen la describe como la más larga, de 42 días sin médicos, para solicitar aumento salarial.","Movimientos sociales"],
+["Huelga de controladores aéreos (2004)","El apunte indica que duró 47 días y ocurrió en tres aeropuertos.","Movimientos sociales"],
+["Huelga de EBAIS del proyecto UCR (2013)","El resumen indica 17 días y describe un convenio UCR-CCSS para atender 45 EBAIS.","Movimientos sociales"],
+["INAMU","Institución citada en la práctica como creada para la protección de la mujer.","Instituciones"],
+["Corrupción y expresidentes","La práctica asocia el caso CCSS-Fischel con Rafael Ángel Calderón Fournier y el caso de sobornos de Alcatel con Miguel Ángel Rodríguez; también menciona una investigación a José María Figueres Olsen.","Política"],
+["Fortalecimiento democrático","El resumen menciona defensa del sufragio, transparencia y rendición de cuentas para contrarrestar la apatía política.","Democracia"],
+["Medidas de reducción del Estado","La práctica menciona movilidad laboral, venta o traslado de empresas públicas, reorientación económica y disminución del gasto público.","PAE"],
+["Países nombrados en la lista de TLC","Colombia, Canadá, Chile, China, México, Panamá, Perú y Singapur.","Comercio"]
+];
+const sourcePages = [{"page": 1, "text": "Partido Político:\nSon organizaciones de participación de un sistema democrático\nBipartidismo:\nFenómeno político con dos partidos políticos ejemplo: PLN y PUSC\nUnipartidismo:\nRégimen político que tiene un monopolio con carácter de dictadura (un color político)\nPluripartidismo o multipartidismo:\nSistema político con gran cantidad de partidos políticos\nEstado Benefactor:\nEstado en el que se da la Guerra Civil de 1948\nDos partidos políticos participantes en 1948\nCalderonismo (PUSC) y Utilio Ulate Blanco (PLN)\nNombre de las principales partidas políticos\n- Liberación Nacional            - ⁠Unión Nacional\n- Progresista independiente   - ⁠Unificación Nacional\n- Nacional independiente        - ⁠alianza popular\nPartido político que ganó las elecciones de 1948\nPartido Liberación Nacional (PLN)\nJosé María Figueres Ferrer\nDos motivos principales para evitar que cualquier partido tuviera\ntendencias comunistas\n Resabios de los rencores de la Guerra Civil de 1948\n El anticomunismo debido a la Guerra Fría."}, {"page": 2, "text": "Deuda externa:\n Son aquellos dineros que el Estado debe a otros países\nDéficit fiscal:\nDiferencia o pérdida del gasto público y los ingresos tributarios\nDeuda interna:\nDinero que el gobierno debe a sus propios ciudadanos\nGuerra Fría:\nGuerra ideológica entre dos formas de pensar capitalistas URSS y comunistas Estados\nUnidos\nProclama de neutralidad Perpetua\nDocumento firmado por Luis Alberto Horge donde compromete a Costa Rica a no\nintervenir en los asuntos internos de otro Estado.\nNeoliberalismo\nPropuesta política - económica de cómo  gobernar un país retomando ideas de l\nliberalismo.\nSubsidio\nApoyo económico suministrado por un ente público para una actividad del sector social\nTratado de Libre Comercio\nTratado entre países con a cuerdos económicos y políticos en el intercambio de\nproductos\nPersonajes importantes en la Política de C.R.\n- Luis Alberto Monge    - ⁠Carlos Alvarado\n- Óscar Arias Sánchez    - Rodrigo Chávez.\n- Rafael Ángel Calderón     - José Figueres\n- Miguel Ángel Rodríguez   - Abel Pacheco\n - Laura Chinchilla   - Guillermo Solís"}, {"page": 3, "text": "¿Qué impactó la economía en los años 80s?\nCrisis petrolera\n Factores externos de la crisis de los 80s\n• Aumento del precio del petróleo\n• Alta migración de nicaragüenses\n• Presencia de los Estados Unidos\nFactores internos de la Crisis de los 80's\nCosta Rica dejó de vender productos manufacturados.\nGobierno empieza a pedir préstamo a bancos internacionales\nEl presidente Rodrigo Carazo rompe el ligamen con el Fondo Monetario Internacional\nCarazo abrió Estan cos del Consejo Nacional de Producción ((NP) y Creó Ferias del\nagricultor.\nPolíticas que impulsó el Estado Costarricense para enfrentar la Crisis\n* Inmanejable deuda externa\n* Aumento de la pobreza\n* ⁠Abaratamiento de productos de exportación y falta de crédito a pequeños productores\n¿Qué se da para reducir la intervención del Estado?\nFomenta la \"iniciativa\" privada\n¿En qué Estados se da la transición usando la liberalización de la\neconomía?\nEstado Benefactor aun Estado Neoliberal\n¿Qué se propuso con el nuevo Estado?\n→ La promoción de las exportaciones\n→ Agricultura de Cambio\n→ Lema \"Volvamos a la tierra\" (Luis Alberto Monge)\n→ El Turismo."}, {"page": 4, "text": "¿Qué productos no tradicionales se implementaron?\nFrutas: Cacao, fresas, cítricos, melón, pimienta, achiote\nTubérculos: yuca, ñame, ñampí, jengibre, malanga\nFlores: plantas ornamentales (rosas y claveles, antuños, ginger)\nCaracterísticas del modelo económico de la promoción de las\nexportaciones\n1.No dejar los cultivos tradicionales (Café, banano y caña de azúcar)\n2. Promover las exportaciones de productos no tradicionales\n3. Defensa de los productos nacionales\n4. Promover gobiernos estables\n5. Ampliar la relación internacional con Japón, China e Israel.\n6. Las empresas exporten a Canadá, Estados Unidos, Japón, Israel, Caribe y Europa.\n7. Productos no tradicionales generan aumento en las divisas.\n¿Qué es el PAES (Planes o Programas de Ajuste Estructura)\nMedidas en la administración pública con impacto económico\n¿Cuáles fueron las modificaciones del PAES?\n- impiden el libre comercio\n- Grupos que constituyen obstáculos: Los sindicatos y el aparato burocrático del Estado.\n¿Quiénes impulsaron los PAES?\nEl Banco Mundial y el Fondo Monetario Internacional\nGobierno del PAE I\nLuis Alberto Monge Álvarez\nMonto financiado PAE I\n$ 80 millones por el Banco Mundial"}, {"page": 5, "text": "Medidas que debía implementar el Estado en el PAE I\n1. Minidevaluación del colón\n2. Creación del a ley de fomento agrícola\n3. Reducir los impuestos\n4. Creación del Centro de la Promoción de Exportaciones (CENPRO)\n5. Establecer un sistema de incentivo a las exportaciones.\n6. Reducción del gasto publico\n7. Ventas ligadas a CODESA\n8. Reducción del proteccionismo arancelario\n9. Aumento a los 65 años edad de jubilación\n¿Qué pretendía el PAE l?\n• Fomentar las exportaciones\n• Desarrollo de nuevas fuentes de ingreso.\n• Reducir el gasto público\n• Privatizar empresas estatales.\nGobierno PAE ll\nÓscar Arias Sánchez\nA qué se dedicó este gobierno\n- reconversión industrial\n- modernización financiera\n- negocios privados\n- Eliminar aranceles a los productos"}, {"page": 6, "text": "Consecuencias:\n• política restrictiva\n• reducir Subsidios\n• protesta de los campesinos\nMedidas en los ajustes de la administración Arias Sánchez\n* Fortalecer la banca privada\n* Fijar precios a los granos básicos\n* Vender empresas ligadas a CODESA\n* Subsidiar la producción agrícola\n* Apoyar productos agrícolas\n* ⁠Mejorar el sector público\n* Restringir el crédito\nValor financiado por el Banco Mundial y Japón PAE II\n$ 200 millones\nGobierno que avanza con el PAE II\nJosé María Figueres Olsen\nValor financiado PAE lll\n$ 250 millones Banco Mundial\nRepercusiones del PAE III\n• desempleo\n• Cierre de negocios\n• Tratado de libre comercio\nQue aperturas se realizaron PAE lll\nCementos del Pacífico Sociedad Anónima (CEMPASA) y FERTICA (fertilizantes)"}, {"page": 7, "text": "Compromisos PAE lll\n1. Privatización de empresas estatales\n2. Monopolios estatales\n3. ⁠Venta de empresas estatales\n4. Modernizar la banca estatal\n5. Regímenes de la C.C.S.S\n6. ⁠Ley de Pensiones complementarias\nEl PAES, conllevó a la Reforma del Estado\n• Intento de privatización de las instituciones estatales.\n• Reducción del tamaño del Estado.\nMotivos del PAES lll\n- Movilidad laboral\n- venta del sector privado y empresas públicas\n- Reorientar la economía\n- Disminución del gasto público\n ¿Qué afectó La Reforma del Estado?\n* Reducción del gasto social\n* Limitaron el desarrollo\n* Deterioro en la calidad de vida\n* Demandas sociales.\nGobiernos que impulsaron el Tratado de libre Comercio\n→ Óscar Arias Sánchez\n→ Laura Chinchilla Miranda\n→ Luis Guillermo Solís Rivera"}, {"page": 8, "text": "¿Entre quienes fue el Tratado Libre Comercio?\nCentroamérica, República Dominicana y Estados Unidos (CAFTA) establece la zona de\ninfluencia comercial y política.\nVentajas del Tratado de Libre Comercio\n• Opciones de venta\n• Nuevas fuentes de trabajo\n• Modificar la producción y competitividad\nDesventajas del Tratado de Libre Comercio\n• División social\n• Quiebra de negocios pequeños\n• Irrespeto de las garantías Sociales\n• Falta en el orden de toma de decisiones.\n• Privatización de empresas estatales\nPaíses que tienen el Tratado de Libre Comercio\n- Colombia    - Canadá   - Chile   - China\n- México   - ⁠Panamá - Perú   -Singapur\nConsecuencias de la crisis económica de los años 80s\n• empleo\n• Salud\n• educación\n• Vivienda digna\n• pobreza extrema\n• Estructura productiva"}, {"page": 9, "text": "Consecuencias con el \"modelo de desarrollo\"\n- Capital extranjero\n- Eliminación de Subsidios\n- Deterioro del Salario\n- Ventas ambulantes\n- Aumento de la luz, agua, teléfono\n- inversión en educación y salud.\n- Reducción del empleo\n- Aumento de la pobreza\n- Ventas de activo (ICE, INS, CCSS)\n\nAnálisis de la Costa Rica del ayer y hoy\n* Diversificar la economía\n* La industria no solucionó los problemas\n* Hoy el estado es más burocrático\n* Flote de la Economía\n* La calidad de vida de los costarricenses depende de la inversión de materia educativa,\nestilo de vida saludable y empleos de calidad.\n\nHuelga\nEs la forma de protesta de los trabajadores para conseguir mejoras laborales.\nInseguridad\nTemor de la población por asaltos, agresiones o delincuencia\nManifestación Social\nMarcha de grupo activista mediante congregación en las calles"}, {"page": 10, "text": "Resolución de problemas del Estado y la década de 1980\n* Crisis nacional                              * Desempleo\n* Ley de Psicotrópicos                   * Se creó el Consejo Nacional de Drogas\n* Inmersión del narcotráfico        * Se firma la Neutralidad perpetua.\n* Creación de cooperativas          * La mujer tuvo reconocimiento legal\n¿Cuáles fueron movimientos sociales desde 1980 hasta la actualidad?\n- Huelga por incentivos médicos: fue la más larga 42 días sin médicos era para subir\nel salario\n- Huelga \"Milicon\": se negoció la empresa transnacional Milicon Costa Rica S.A, con el\nSindicato del ICE, se consideró violentada la Constitución Política.\n- Huelga \"Como -ICE\"(2000): EL PLN y PUSC modifican el ICE en materia de\nTelecomunicaciones, Las leyes del \"'combo\" se aprobaron en el primer debate.\n- Huelga de controladores aéreos (2004):  se propone un aumento salarial de 35%\nSuperior a los inspectores de Aviación Civil se originó la huelga en tres aeropuertos: Juan\nSantamaría, Tobías Bolaños y Daniel Oduber, duró 47 días\n- Huelga de EBAIS del proyecto UCR (2013): La UCR y la CCSS por convenio atienden\nen 45 EBAIS del cantón en Montes de Oca, Curridabat y La Unión, 17 días con nuevos\ndesempleados.\n\nEl Bipartidismo 1980\nPLN y PUSE.\nRafael Ángel Calderón Fournier:\n Acusado \"peculado y corrupción agravada” en el caso CCSS- Fishel\n ⁠Ángel Rodríguez\nDelitos de Soborno con empresa francesa de Telecomunicaciones Alcatel\nJosé María Figueres Olsen:\nInvestigado por supuestos beneficios económicos obtenidos de la empresa ALCATEL\n900 000 dólares, abandonó el país y se estableció en Suiza y posteriormente en España."}, {"page": 11, "text": "¿Qué sucedió durante el COVID - 19?\n* Gobierno de Carlos Alvarado       * Descontento popular\n* José María Figueres Olsen vuelve a la candidatura\n* Falta de Liderazgo\n¿Cómo se contrarresta la apatía política?\n→ El MEP propone la Vida Estudiantil en Centros educativos (votaciones)\n→ Defensa al sufragio.    → Transparencia     → Rendición de cuentas\n\nPractica examen\n\n\"El aumento del precio del petróleo en los años 70 golpeó directamente al modelo\nde sustitución de importaciones\"\nSegún el texto este factor externo que propicia la crisis de la década de los 80 s originó\nlo siguiente\n•Regresar a un modelo de exploración del sector primario.\n\n\"La revolución Sandinista y el gobierno dictatorial de la familia Somoza. afectan a\nCosta Rica\". Parafraseo.\n¿En qué medida esta situación afectó d nuestro país?\nMuchísima migración de nicaragüenses que huyen de la guerra hacia nuestro país.\n\n\"Con la crisis petrolera, Costa Rica dejó de vender productos manufacturados y el\nestado dejó de percibir dineros provenientes de los impuestos\"\nLo anterior se tradujo en\nUn fuerte déficit fiscal.\n\n La crisis se agudizó con el gobierno de Castro Carazo al romper el ligamen con:\n El Fondo Monetario Internacional."}, {"page": 12, "text": "La liberación económica para fomentar la iniciativa privada provocó pasar de un\nestado benefactor a uno\nNeoliberal\n\nLuis Alberto Monge durante su administración impulsó su lema \" volvamos a la\ntierra\" principalmente de productos no tradicionales e impulsó una nueva fuente\nde riqueza que hasta hoy en día es una de la más importante llamada\n Turismo.\n\nUna d e las trabas que impiden el libre comercio según los planes de ajuste\nestructural es la siguiente\nEl aparato burocrático del estado.\n\n\"Se declaró exportación de raíz de ipecacuana, cuando en realidad era aserrín,\naleta de tiburón pulverizada cuando era tan solo arroz quebrado\".\n Estafas a la hacienda pública a raíz del fomento de las exportaciones.\n\nUna forma de promover las exportaciones incentivada por el estado costarricense\nes la siguiente\nLa generación de certificados de abono tributario (CAT).\n\nUna de las consecuencias de la política restrictiva durante la primera\nadministración de Oscar Arias fue la siguiente\nSe importaron productos agrícolas que se producían en el país.\n\nUna consecuencia recurrente de toda crisis nacional o internacional es la siguiente\nFalta o encarecimiento de los productos básicos."}, {"page": 13, "text": "¿Cuáles son dos ejemplos de países Centroamericanos que luchaban con grupos\narmados en la década de los ochentas?\nEl Salvador y Nicaragua.\n\nUna institución que se creó para la protección de la mujer en Costa  Rica es la\nsiguiente\n El INAMU.\n\nSe le acusó por delitos relacionados con el pago de sobornos por parte de la\nempresa de Telecomunicaciones ALCATEL, por haber incentivado a otros\nfuncionarios a cobrar dádivas a dicha empresa.\n¿A cuál expresidente se le acusó de lo anterior?\nMiguel Ángel Rodríguez.\n\nA cuál expresidente se le acusó de \"peculado y corrupción agravado\" en el caso\nCCSS Fischel\nRafael Ángel Calderón Fournier.\n\nFue investigado por supuestos beneficios económicos obtenidos por la venta de\nservicios disfrazados de asesorías a la empresa francesa ALCATEL, luego se\nestableció primeramente en Suiza y posteriormente en España, sin  dar\nexplicaciones.\n¿A cuál expresidente se le acuso de lo anterior?\nJosé María Figueres Olsen.\n\nUna consecuencia que genera en la ciudadanía los constantes casos de\ncorrupción política de los altos funcionarios en las bandas de los  partidos\ntradicionales es la siguiente\nLa necesidad de buscar alternativas políticas."}, {"page": 14, "text": "Una Asamblea Legislativa fraccionada debido a los múltiples partidos  políticos\ngenera\nDificultad para llegar a acuerdos y aprobación de leyes.\n\nLa sociedad costarricense en materia política en los últimos años se  ha\ncaracterizado por\nSer muy pasiva y permisiva de los abusos de poder de los funcionarios electos.\n\nPara que se dé un fortalecimiento de la democracia costarricense se requiere de\ntransparencia.\n\nEscriba los nombres de cinco partidos políticos que participaron en\nelecciones nacionales entre 1950 y 1980.\nPartido Liberación Nacional (PLN).\nPartido Unión Nacional.\nPartido Alianza Popular.\nPartido Unificación Nacional.\nPartido Demócrata.\n\nCite cuatro medidas impulsadas por  la primera administración Arias\nSánchez ante la crisis de los años 1986-1990 contemplados en el PAE\nII.\nFortalecer la banca privada\nVender empresas ligadas a codesa\nFijar los precios en granos básicos\nApoyar productos agrícolas capases de adaptarse al mercado nacional\nMejorar la administración del sector público para incrementar el ahorro del gobierno"}, {"page": 15, "text": "Cite cuatro medidas llevadas a cabo durante los años 1990 para reducir\nel tamaño del Estado costarricense.\nMovilidad laboral\nLa venta o el traslado al sector privado, de instituciones y empresas públicas\nReorientar la economía\nDisminución del gasto público\n\nEscriba el nombre completo sin iniciales de los dos partidos políticos\nque se alternaron el poder en Costa Rica desde los años 80s hasta el\n2014.\nPartido Liberación Nacional.\nPartido Unidad Social Cristiana\n\nAnote el nombre de cinco productos no tradicionales (frutas,\ntubérculos, flores, follaje y plantos ornaméntales).\nMelón, jengibre, yuca, malanga, calas\n\nEscriba cuatro efectos negativos de los tratados de libre comercio.\nDivisión social\nQuiebra es muchos negocios pequeños frente a las grandes multinacionales\nIrrespeto de las garantías sociales por parte de las compañías extranjeras que se instalan\nen el país\nFalta de orden en la toma de decisiones y sobre lo que se quiere como país en un Tratado\nde Libre Comercio\n\nAnote los nombres de cinco países con los que Costa Rica tiene tratados de libre\ncomercio.\nColombia, México, Canadá, Panamá, Chile, Perú, China y Singapur"}];
+let progress=JSON.parse(localStorage.getItem("academiaProgress")||'{"xp":0,"done":0,"worlds":{}}');
+let currentQuestions=[],qIndex=0,correctCount=0,wrongList=[],missionXP=0,streak=0,bestStreak=0,answered=false,currentWorld=null,flashIndex=0,flashRevealed=false,reviewMode=false;
+function save(){localStorage.setItem("academiaProgress",JSON.stringify(progress));updateStats()}
+function rank(x){return x>=1200?"Maestra del Conocimiento":x>=700?"Guardiana de la Historia":x>=300?"Exploradora Experta":x>=100?"Aprendiz Avanzada":"Aprendiz de la Historia"}
+function updateStats(){document.getElementById("homeXP").textContent=progress.xp;document.getElementById("homeDone").textContent=progress.done;document.getElementById("topRank").textContent=rank(progress.xp)}
+function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo(0,0);if(id==="home"){renderWorlds();updateStats()}if(id==="study")renderStudy();if(id==="flash")renderFlash()}
+function renderWorlds(){document.getElementById("worlds").innerHTML=worlds.map((w,i)=>{let s=progress.worlds[w.id]||{best:0};return `<article class="world"><div class="emoji">${w.emoji}</div><small>MUNDO ${i+1} · ${w.tag}</small><h3>${w.name}</h3><p>${w.desc}</p><div class="muted" style="font-size:12px">${w.qs.length} preguntas · Mejor resultado: ${s.best||0}%</div><button onclick="startWorld(${i})">Entrar al mundo →</button></article>`}).join("")}
+function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function startWorld(i){currentWorld=worlds[i];currentQuestions=shuffle(currentWorld.qs);qIndex=0;correctCount=0;wrongList=[];missionXP=0;streak=0;bestStreak=0;reviewMode=false;document.getElementById("worldEyebrow").textContent=`Mundo ${i+1} · ${currentWorld.tag}`;document.getElementById("worldTitle").textContent=currentWorld.name;showScreen("quiz");renderQuestion()}
+function startFinal(){currentWorld={id:"final",name:"Examen final: la gran prueba",tag:"Examen final",emoji:"🏆"};currentQuestions=shuffle(worlds.flatMap(w=>w.qs)).slice(0,30);qIndex=0;correctCount=0;wrongList=[];missionXP=0;streak=0;bestStreak=0;reviewMode=false;document.getElementById("worldEyebrow").textContent="Desafío final · 30 preguntas";document.getElementById("worldTitle").textContent=currentWorld.name;showScreen("quiz");renderQuestion()}
+function renderQuestion(){answered=false;let q=currentQuestions[qIndex];let opts=q[1].map((t,i)=>({t,correct:i===q[2]}));let mixed=shuffle(opts);q._mixed=mixed;document.getElementById("qXP").textContent=missionXP;document.getElementById("qProgress").textContent=`${qIndex}/${currentQuestions.length}`;document.getElementById("qStreak").textContent=streak+" 🔥";document.getElementById("quizMain").innerHTML=`<div class="question-meta"><span>${currentWorld.emoji} ${currentWorld.tag}</span><span>Pregunta ${qIndex+1} de ${currentQuestions.length}</span></div><div class="progress"><div style="width:${qIndex/currentQuestions.length*100}%"></div></div><div class="question">${q[0]}</div><div class="answers">${mixed.map((o,i)=>`<button class="answer" onclick="chooseAnswer(${i})" id="ans${i}"><span class="letter">${"ABCD"[i]}</span><span>${o.t}</span></button>`).join("")}</div><div class="feedback" id="feedback"></div><div class="bottom-actions"><span class="muted" style="font-size:13px;align-self:center">✨ Respuesta correcta: +10 XP</span><button id="nextBtn" disabled onclick="nextQuestion()">Siguiente →</button></div>`}
+function chooseAnswer(i){if(answered)return;answered=true;let q=currentQuestions[qIndex],picked=q._mixed[i],fb=document.getElementById("feedback");document.querySelectorAll(".answer").forEach((b,j)=>{b.disabled=true;if(q._mixed[j].correct)b.classList.add("correct")});if(picked.correct){correctCount++;missionXP+=10;progress.xp+=10;streak++;bestStreak=Math.max(bestStreak,streak);progress.done++;fb.innerHTML=`<strong>¡Correcto! +10 XP ✨</strong><br>${q[3]}`}else{document.getElementById("ans"+i).classList.add("wrong");streak=0;wrongList.push(q);fb.innerHTML=`<strong>¡Casi! La respuesta correcta era: ${q[1][q[2]]}</strong><br>${q[3]}`}fb.classList.add("show");document.getElementById("nextBtn").disabled=false;document.getElementById("qXP").textContent=missionXP;document.getElementById("qProgress").textContent=`${qIndex+1}/${currentQuestions.length}`;document.getElementById("qStreak").textContent=streak+" 🔥";save()}
+function nextQuestion(){if(!answered)return;qIndex++;if(qIndex>=currentQuestions.length){finishMission();return}renderQuestion()}
+function finishMission(){let pct=Math.round(correctCount/currentQuestions.length*100);progress.worlds[currentWorld.id]=progress.worlds[currentWorld.id]||{best:0};progress.worlds[currentWorld.id].best=Math.max(progress.worlds[currentWorld.id].best,pct);save();showScreen("results");document.getElementById("resultEmoji").textContent=pct>=90?"👑":pct>=70?"🏆":pct>=50?"✨":"📚";document.getElementById("resultTitle").textContent=pct>=90?"¡Maestra del conocimiento!":pct>=70?"¡Misión superada!":pct>=50?"¡Vas avanzando!":"¡Cada intento te enseña!";document.getElementById("resultScore").textContent=pct+"%";document.getElementById("resultText").textContent=`Terminaste ${currentWorld.name}. Revisa las explicaciones y vuelve a jugar para mejorar tu resultado.`;document.getElementById("resultCorrect").textContent=correctCount;document.getElementById("resultWrong").textContent=wrongList.length;document.getElementById("resultXP").textContent=missionXP;document.getElementById("reviewBox").innerHTML=""}
+function reviewWrong(){if(!wrongList.length){document.getElementById("reviewBox").innerHTML="<p>¡No tuviste errores en esta misión! Excelente trabajo.</p>";return}currentWorld={id:"repaso",name:"Repaso de errores",tag:"Refuerzo",emoji:"📚"};currentQuestions=shuffle(wrongList);qIndex=0;correctCount=0;wrongList=[];missionXP=0;streak=0;reviewMode=true;document.getElementById("worldEyebrow").textContent="Repetición inteligente";document.getElementById("worldTitle").textContent="Repasa lo que costó";showScreen("quiz");renderQuestion()}
+function renderStudy(){let s=(document.getElementById("studySearch")?.value||"").toLowerCase();let noteCards=notes.filter(n=>n.join(" ").toLowerCase().includes(s)).map(n=>`<article class="study-card"><span class="badge">${n[2]}</span><h3 style="margin-top:10px">${n[0]}</h3><p>${n[1]}</p></article>`);let pageCards=sourcePages.filter(p=>(`página ${p.page} ${p.text}`).toLowerCase().includes(s)).map(p=>`<article class="study-card source-page" style="grid-column:1/-1"><span class="badge">PDF ORIGINAL · PÁGINA ${p.page} DE 15</span><p style="white-space:pre-wrap;margin-top:12px;color:var(--ink)">${escapeHtml(p.text)}</p></article>`);document.getElementById("studyGrid").innerHTML=(noteCards.length?`<div style="grid-column:1/-1"><h3>📘 Apuntes organizados (${noteCards.length})</h3></div>${noteCards.join("")}`:"")+(pageCards.length?`<div style="grid-column:1/-1;margin-top:14px"><h3>📄 Documento original completo (${pageCards.length} páginas coincidentes)</h3><p class="muted">Aquí puedes consultar el texto extraído página por página para que no se pierdan listas, detalles ni preguntas de la práctica.</p></div>${pageCards.join("")}`:"")||"<p>No se encontraron apuntes con esa búsqueda.</p>"}
+function escapeHtml(str){return str.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderFlash(){let deck=notes;let n=deck[flashIndex%deck.length];document.getElementById("flashCount").textContent=`Tarjeta ${flashIndex+1} de ${deck.length}`;document.getElementById("flashLabel").textContent=flashRevealed?"Respuesta":"Concepto";document.getElementById("flashFront").textContent=flashRevealed?n[1]:n[0];document.getElementById("flashBack").style.display="none";document.getElementById("flashHint").textContent=flashRevealed?"Toca para volver a ver el concepto":"Toca para revelar la definición"}
+function flipFlash(){flashRevealed=!flashRevealed;renderFlash()}function nextFlash(){flashIndex=(flashIndex+1)%notes.length;flashRevealed=false;renderFlash()}function prevFlash(){flashIndex=(flashIndex-1+notes.length)%notes.length;flashRevealed=false;renderFlash()}
+renderWorlds();updateStats();renderStudy();renderFlash();
+</script>
+</body></html>
